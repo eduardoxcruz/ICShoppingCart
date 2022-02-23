@@ -7,4 +7,8 @@
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="IndustrialComplements.Mux" Version="2.0.0" />
+	</ItemGroup>
+
 </Project>
