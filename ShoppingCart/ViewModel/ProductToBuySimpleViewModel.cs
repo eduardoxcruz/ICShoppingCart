@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ShoppingCart.ViewModel;
 
-public class ProductToBuyViewModel : INotifyPropertyChanged
+public class ProductToBuySimpleViewModel : INotifyPropertyChanged
 {
 	public event PropertyChangedEventHandler? PropertyChanged;
 
