@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart.DTO;
 
-public class ProductToBuySimpleDto
+public class ProductToBuySimple
 {
 	
 }
