@@ -8,172 +8,177 @@ namespace ShoppingCart.ViewModel;
 
 public class ProductToBuySimpleViewModel : INotifyPropertyChanged
 {
-	private ProductToBuySimple _productToBuy { get; set; }
+	private ProductToBuySimple ProductToBuy { get; set; }
 	public int Id
 	{
-		get => _productToBuy.Id;
+		get => ProductToBuy.Id;
 		set
 		{
-			_productToBuy.Id = value;
+			ProductToBuy.Id = value;
 			OnPropertyChanged(nameof(Id));
 		}
 	}
 	public string Status
 	{
-		get => _productToBuy.Status;
+		get => ProductToBuy.Status;
 		set
 		{
-			_productToBuy.Status = value;
+			ProductToBuy.Status = value;
 			OnPropertyChanged(nameof(Status));
 		}
 	}
 	public int? ProviderId
 	{
-		get => _productToBuy.ProviderId;
+		get => ProductToBuy.ProviderId;
 		set
 		{
-			_productToBuy.ProviderId = value;
+			ProductToBuy.ProviderId = value;
 			OnPropertyChanged(nameof(ProviderId));
 		}
 	}
 	public Provider? Provider
 	{
-		get => _productToBuy.Provider;
+		get => ProductToBuy.Provider;
 		set
 		{
-			_productToBuy.Provider = value;
+			ProductToBuy.Provider = value;
 			OnPropertyChanged(nameof(Provider));
 		}
 	}
 	public DateTime? LocationDate
 	{
-		get => _productToBuy.LocationDate;
+		get => ProductToBuy.LocationDate;
 		set
 		{
-			_productToBuy.LocationDate = value;
+			ProductToBuy.LocationDate = value;
 			OnPropertyChanged(nameof(LocationDate));
 		}
 	}
 	public int? SellerId
 	{
-		get => _productToBuy.SellerId;
+		get => ProductToBuy.SellerId;
 		set
 		{
-			_productToBuy.SellerId = value;
+			ProductToBuy.SellerId = value;
 			OnPropertyChanged(nameof(SellerId));
 		}
 	}
 	public Employee? Seller
 	{
-		get => _productToBuy.Seller;
+		get => ProductToBuy.Seller;
 		set
 		{
-			_productToBuy.Seller = value;
+			ProductToBuy.Seller = value;
 			OnPropertyChanged(nameof(Seller));
 		}
 	}
 	public DateTime? ArrivalDate
 	{
-		get => _productToBuy.ArrivalDate;
+		get => ProductToBuy.ArrivalDate;
 		set
 		{
-			_productToBuy.ArrivalDate = value;
+			ProductToBuy.ArrivalDate = value;
 			OnPropertyChanged(nameof(ArrivalDate));
 		}
 	}
 	public string? Comments
 	{
-		get => _productToBuy.Comments;
+		get => ProductToBuy.Comments;
 		set
 		{
-			_productToBuy.Comments = value;
+			ProductToBuy.Comments = value;
 			OnPropertyChanged(nameof(Comments));
 		}
 	}
 	public DateTime RequestDate
 	{
-		get => _productToBuy.RequestDate;
+		get => ProductToBuy.RequestDate;
 		set
 		{
-			_productToBuy.RequestDate = value;
+			ProductToBuy.RequestDate = value;
 			OnPropertyChanged(nameof(RequestDate));
 		}
 	}
 	public int? PetitionerId
 	{
-		get => _productToBuy.PetitionerId;
+		get => ProductToBuy.PetitionerId;
 		set
 		{
-			_productToBuy.PetitionerId = value;
+			ProductToBuy.PetitionerId = value;
 			OnPropertyChanged(nameof(PetitionerId));
 		}
 	}
 	public Employee? Petitioner
 	{
-		get => _productToBuy.Petitioner;
+		get => ProductToBuy.Petitioner;
 		set
 		{
-			_productToBuy.Petitioner = value;
+			ProductToBuy.Petitioner = value;
 			OnPropertyChanged(nameof(Petitioner));
 		}
 	}
 	public string InternalReference
 	{
-		get => _productToBuy.InternalReference;
+		get => ProductToBuy.InternalReference;
 		set
 		{
-			_productToBuy.InternalReference = value;
+			ProductToBuy.InternalReference = value;
 			OnPropertyChanged(nameof(InternalReference));
 		}
 	}
 	public string ProductDescription
 	{
-		get => _productToBuy.ProductDescription;
+		get => ProductToBuy.ProductDescription;
 		set
 		{
-			_productToBuy.ProductDescription = value;
+			ProductToBuy.ProductDescription = value;
 			OnPropertyChanged(nameof(ProductDescription));
 		}
 	}
 	public int RequestedAmount
 	{
-		get => _productToBuy.RequestedAmount;
+		get => ProductToBuy.RequestedAmount;
 		set
 		{
-			_productToBuy.RequestedAmount = value;
+			ProductToBuy.RequestedAmount = value;
 			OnPropertyChanged(nameof(RequestedAmount));
 		}
 	}
 	public string MountingTechnology
 	{
-		get => _productToBuy.MountingTechnology;
+		get => ProductToBuy.MountingTechnology;
 		set
 		{
-			_productToBuy.MountingTechnology = value;
+			ProductToBuy.MountingTechnology = value;
 			OnPropertyChanged(nameof(MountingTechnology));
 		}
 	}
 	public string EncapsulationType
 	{
-		get => _productToBuy.EncapsulationType;
+		get => ProductToBuy.EncapsulationType;
 		set
 		{
-			_productToBuy.EncapsulationType = value;
+			ProductToBuy.EncapsulationType = value;
 			OnPropertyChanged(nameof(EncapsulationType));
 		}
 	}
 	public string Priority
 	{
-		get => _productToBuy.Priority;
+		get => ProductToBuy.Priority;
 		set
 		{
-			_productToBuy.Priority = value;
+			ProductToBuy.Priority = value;
 			OnPropertyChanged(nameof(Priority));
 		}
 	}
 
 	public event PropertyChangedEventHandler? PropertyChanged;
 
+	public ProductToBuySimpleViewModel()
+	{
+		ProductToBuy = new ProductToBuySimple();
+	}
+	
 	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
 	{
 		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
