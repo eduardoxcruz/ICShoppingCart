@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Mux.Model;
@@ -9,6 +10,7 @@ namespace ShoppingCart.ViewModel;
 public class ProductToBuySimpleViewModel : INotifyPropertyChanged
 {
 	private ProductToBuySimple ProductToBuy { get; set; }
+	public ObservableCollection<ProductToBuySimple> ProductsToBuy { get; set; }
 	public int Id
 	{
 		get => ProductToBuy.Id;
@@ -177,6 +179,7 @@ public class ProductToBuySimpleViewModel : INotifyPropertyChanged
 	public ProductToBuySimpleViewModel()
 	{
 		ProductToBuy = new ProductToBuySimple();
+		ProductsToBuy = new ObservableCollection<ProductToBuySimple>();
 	}
 	
 	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
