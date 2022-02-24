@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Mux.Model;
 using ShoppingCart.DTO;
 
 namespace ShoppingCart.ViewModel;
 
-public class ProductToBuySimpleViewModel : INotifyPropertyChanged
+public class ProductToBuySimpleViewModel : ViewModelBase
 {
 	private ProductToBuySimple ProductToBuy { get; set; }
 	public ObservableCollection<ProductToBuySimple> ProductsToBuy { get; set; }
@@ -174,16 +172,9 @@ public class ProductToBuySimpleViewModel : INotifyPropertyChanged
 		}
 	}
 
-	public event PropertyChangedEventHandler? PropertyChanged;
-
 	public ProductToBuySimpleViewModel()
 	{
 		ProductToBuy = new ProductToBuySimple();
 		ProductsToBuy = new ObservableCollection<ProductToBuySimple>();
-	}
-	
-	protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
 }
