@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart;
 
-public class Logger
+public static class Logger
 {
 	
 }
