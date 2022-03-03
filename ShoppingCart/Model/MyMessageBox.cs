@@ -7,7 +7,7 @@ public static class MyMessageBox
 	public static MessageBoxResult ShowConfirmationBox(string message)
 	{
 		return MessageBox.Show(message,
-			"Confirmar Accion",
+			"Confirmar",
 			MessageBoxButton.YesNo,
 			MessageBoxImage.Exclamation);
 	}
