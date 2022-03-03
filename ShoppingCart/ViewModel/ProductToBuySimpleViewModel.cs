@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using Mux;
 using Mux.Model;
 using Serilog;
-using SerilogUtils;
 using ShoppingCart.Model;
 
 namespace ShoppingCart.ViewModel;
@@ -28,7 +26,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 
 	public ProductToBuySimpleViewModel()
 	{
-		ProductToBuy = new ProductToBuySimple();
-		ProductsToBuy = new ObservableCollection<ProductToBuySimple>();
+		Context = new ICContext();
+		_productToBuy = new ProductToBuy();
 	}
 }
