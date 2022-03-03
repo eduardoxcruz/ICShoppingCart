@@ -19,4 +19,12 @@ public static class MyMessageBox
 			MessageBoxButton.OK,
 			MessageBoxImage.Error);
 	}
+
+	public static void ShowSuccessBox(string message)
+	{
+		MessageBox.Show(message,
+			"Exito",
+			MessageBoxButton.OK,
+			MessageBoxImage.Asterisk);
+	}
 }
