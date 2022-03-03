@@ -3,7 +3,7 @@ using SerilogUtils;
 
 namespace ShoppingCart.Model;
 
-public static class Logger
+public static class MyLogger
 {
 	public static ILogger CreateLogger<T>() where T : new()
 	{
