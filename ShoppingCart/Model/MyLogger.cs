@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using SerilogUtils;
 
-namespace ShoppingCart;
+namespace ShoppingCart.Model;
 
 public static class Logger
 {
