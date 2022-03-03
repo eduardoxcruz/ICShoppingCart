@@ -11,4 +11,12 @@ public static class MyMessageBox
 			MessageBoxButton.YesNo,
 			MessageBoxImage.Question);
 	}
+
+	public static void ShowErrorBox(string message)
+	{
+		MessageBox.Show(message,
+			"Error",
+			MessageBoxButton.OK,
+			MessageBoxImage.Error);
+	}
 }
