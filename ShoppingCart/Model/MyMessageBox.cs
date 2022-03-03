@@ -9,7 +9,7 @@ public static class MyMessageBox
 		return MessageBox.Show(message,
 			"Confirmar Accion",
 			MessageBoxButton.YesNo,
-			MessageBoxImage.Question);
+			MessageBoxImage.Exclamation);
 	}
 
 	public static void ShowErrorBox(string message)
