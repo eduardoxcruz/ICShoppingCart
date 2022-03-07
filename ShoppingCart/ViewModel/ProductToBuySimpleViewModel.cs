@@ -85,6 +85,11 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 			.Include(p => p.Provider)
 			.Load();
 	}
+
+	private void LoadEmployees()
+	{
+		Context.Employees.Load();
+	}
 	
 	private async void AddProductToBuy(object o)
 	{
