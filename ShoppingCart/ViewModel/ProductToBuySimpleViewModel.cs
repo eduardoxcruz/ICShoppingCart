@@ -46,7 +46,27 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		AddProductToBuyCommand = new RelayCommand(AddProductToBuy, _ => true);
 		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
 	}
-
+	
+	private ObservableCollection<ProductToBuy> GetShoppingCartAsObservableCollection()
+	{
+		try
+		{
+			LoadShoppingCart();
+			
+			return Context.ShoppingCart.Local.ToObservableCollection();
+		}
+		catch (Exception exception)
+		{
+			Logger
+				.Here()
+				.Error(
+					"Ocurrio una excepcion al tratar de cargar el carrito de compras. {@BaseException}", 
+					exception.GetBaseException());
+			MyMessageBox.ShowErrorBox("Ocurrio un error al cargar el carrito de compras. Vea el log para mas detalles.");
+			return new ObservableCollection<ProductToBuy>();
+		}
+	}
+	
 	private void LoadShoppingCart()
 	{
 		Context.ShoppingCart
