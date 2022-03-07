@@ -65,6 +65,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		_productToBuy = new ProductToBuy();
 		_shoppingCart = GetShoppingCartAsObservableCollection();
 		_employees = GetEmployeesAsObservableCollection();
+		_mountingTechnologies = GetMountingTechnologiesAsObservableCollection();
 		AddProductToBuyCommand = new RelayCommand(AddProductToBuy, _ => true);
 		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
 	}
