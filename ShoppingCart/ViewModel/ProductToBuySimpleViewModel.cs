@@ -85,7 +85,27 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 			.Include(p => p.Provider)
 			.Load();
 	}
-
+	
+	private ObservableCollection<Employee> GetEmployeesAsObservableCollection()
+	{
+		try
+		{
+			LoadEmployees();
+			
+			return Context.Employees.Local.ToObservableCollection();
+		}
+		catch (Exception exception)
+		{
+			Logger
+				.Here()
+				.Error(
+					"Ocurrio una excepcion al tratar de cargar el los empleados. {@BaseException}", 
+					exception.GetBaseException());
+			//MyMessageBox.ShowErrorBox("Ocurrio un error al cargar los empleados. Vea el log para mas detalles.");
+			return new ObservableCollection<Employee>();
+		}
+	}
+	
 	private void LoadEmployees()
 	{
 		Context.Employees.Load();
