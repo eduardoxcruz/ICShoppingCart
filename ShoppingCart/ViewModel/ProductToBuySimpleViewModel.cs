@@ -136,9 +136,9 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 			Logger
 				.Here()
 				.Error(
-					"Ocurrio una excepcion al tratar de cargar el los empleados. {@BaseException}", 
+					"Ocurrio una excepcion al tratar de cargar las tecnologias de montaje. {@BaseException}", 
 					exception.GetBaseException());
-			MyMessageBox.ShowErrorBox("Ocurrio un error al cargar los empleados. Vea el log para mas detalles.");
+			MyMessageBox.ShowErrorBox("Ocurrio un error al cargar las tecnologias de montaje. Vea el log para mas detalles.");
 			return new ObservableCollection<MountingTechnology>();
 		}
 	}
