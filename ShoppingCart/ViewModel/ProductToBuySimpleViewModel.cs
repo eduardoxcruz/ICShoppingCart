@@ -150,7 +150,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 	private void CopyModifiedProperties(ref ProductToBuy productToBuy)
 	{
 		productToBuy.Comments = ProductToBuy.Comments;
-		productToBuy.PetitionerId = ProductToBuy.PetitionerId;
+		productToBuy.PetitionerId = ProductToBuy.Petitioner!.Id;
 		productToBuy.InternalReference = ProductToBuy.InternalReference;
 		productToBuy.ProductDescription = ProductToBuy.ProductDescription;
 		productToBuy.RequestedAmount = ProductToBuy.RequestedAmount;
