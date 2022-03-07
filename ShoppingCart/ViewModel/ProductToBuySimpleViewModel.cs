@@ -82,7 +82,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		
 		try
 		{
-			ProductToBuy newProductToBuy = GenerateNewProductToBuyToInsert();
+			ProductToBuy newProductToBuy = GenerateNewProductToBuy();
 			ProductToBuy = new ProductToBuy();
 			newProductToBuy.Id = 0;
 			Context.ShoppingCart.Add(newProductToBuy);
@@ -100,7 +100,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		}
 	}
 
-	private ProductToBuy GenerateNewProductToBuyToInsert()
+	private ProductToBuy GenerateNewProductToBuy()
 	{
 		ProductToBuy newProductToBuy = new()
 		{
