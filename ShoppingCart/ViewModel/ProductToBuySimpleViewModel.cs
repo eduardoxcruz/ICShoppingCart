@@ -101,7 +101,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 				.Error(
 					"Ocurrio una excepcion al tratar de cargar el los empleados. {@BaseException}", 
 					exception.GetBaseException());
-			//MyMessageBox.ShowErrorBox("Ocurrio un error al cargar los empleados. Vea el log para mas detalles.");
+			MyMessageBox.ShowErrorBox("Ocurrio un error al cargar los empleados. Vea el log para mas detalles.");
 			return new ObservableCollection<Employee>();
 		}
 	}
