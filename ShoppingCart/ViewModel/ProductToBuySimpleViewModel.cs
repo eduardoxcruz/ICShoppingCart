@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Mux;
@@ -12,6 +13,7 @@ namespace ShoppingCart.ViewModel;
 public class ProductToBuySimpleViewModel : ViewModelBase
 {
 	private ProductToBuy _productToBuy;
+	private ObservableCollection<ProductToBuy> _productsToBuy;
 
 	public ProductToBuy ProductToBuy
 	{
@@ -22,6 +24,16 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 			OnPropertyChanged(nameof(ProductToBuy));
 		}
 	}
+	public ObservableCollection<ProductToBuy> ProductsToBuy
+	{
+		get => _productsToBuy;
+		set
+		{
+			_productsToBuy = value;
+			OnPropertyChanged(nameof(ProductsToBuy));
+		}
+	}
+
 	public RelayCommand AddProductToBuyCommand { get; }
 	public RelayCommand UpdateProductToBuyCommand { get; }
 	private ICContext Context { get; set; }
