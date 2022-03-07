@@ -82,11 +82,9 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		
 		try
 		{
-			ProductToBuy newProductToBuy = GenerateNewProductToBuy();
-			ProductToBuy = new ProductToBuy();
-			newProductToBuy.Id = 0;
-			Context.ShoppingCart.Add(newProductToBuy);
+			Context.ShoppingCart.Add(GenerateNewProductToBuy());
 			await Context.SaveChangesAsync();
+			ProductToBuy = new ProductToBuy();
 			MyMessageBox.ShowSuccessBox("Exito al agregar el registro.");
 		}
 		catch (Exception exception)
