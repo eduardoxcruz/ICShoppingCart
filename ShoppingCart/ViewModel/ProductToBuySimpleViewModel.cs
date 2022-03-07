@@ -102,18 +102,15 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 
 	private ProductToBuy GenerateNewProductToBuyToInsert()
 	{
-		ProductToBuy productToBuy = new()
+		ProductToBuy newProductToBuy = new()
 		{
 			RequestDate = DateTime.Now,
 			Status = "PENDIENTE"
 		};
+		
+		CopyModifiedProperties(ref newProductToBuy);
 
-		if (ProductToBuy.Id > 0)
-		{
-			CopyModifiedProperties(ref productToBuy);
-		}
-
-		return productToBuy;
+		return newProductToBuy;
 	}
 
 	private void CopyModifiedProperties(ref ProductToBuy productToBuy)
