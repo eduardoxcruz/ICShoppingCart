@@ -14,6 +14,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 {
 	private ProductToBuy _productToBuy;
 	private ObservableCollection<ProductToBuy> _shoppingCart;
+	private ObservableCollection<Employee> _employees;
 
 	public ProductToBuy ProductToBuy
 	{
@@ -31,6 +32,15 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		{
 			_shoppingCart = value;
 			OnPropertyChanged(nameof(ShoppingCart));
+		}
+	}
+	public ObservableCollection<Employee> Employees
+	{
+		get => _employees;
+		set
+		{
+			_employees = value;
+			OnPropertyChanged(nameof(Employees));
 		}
 	}
 	public RelayCommand AddProductToBuyCommand { get; }
