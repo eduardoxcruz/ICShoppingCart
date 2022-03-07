@@ -121,6 +121,11 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 	{
 		Context.Employees.Load();
 	}
+
+	private void LoadMountingTechnologies()
+	{
+		Context.MountingTechnologies.Load();
+	}
 	
 	private async void AddProductToBuy(object o)
 	{
