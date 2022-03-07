@@ -47,6 +47,14 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
 	}
 
+	private void LoadShoppingCart()
+	{
+		Context.ShoppingCart
+			.Include(p => p.Petitioner)
+			.Include(p => p.Provider)
+			.Load();
+	}
+	
 	private async void AddProductToBuy(object o)
 	{
 		if (!ConfirmAction("¿Desea agregar el registro?")) return;
