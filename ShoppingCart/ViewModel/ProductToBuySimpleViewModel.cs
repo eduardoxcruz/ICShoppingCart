@@ -13,7 +13,7 @@ namespace ShoppingCart.ViewModel;
 public class ProductToBuySimpleViewModel : ViewModelBase
 {
 	private ProductToBuy _productToBuy;
-	private ObservableCollection<ProductToBuy> _productsToBuy;
+	private ObservableCollection<ProductToBuy> _shoppingCart;
 
 	public ProductToBuy ProductToBuy
 	{
@@ -24,16 +24,15 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 			OnPropertyChanged(nameof(ProductToBuy));
 		}
 	}
-	public ObservableCollection<ProductToBuy> ProductsToBuy
+	public ObservableCollection<ProductToBuy> ShoppingCart
 	{
-		get => _productsToBuy;
+		get => _shoppingCart;
 		set
 		{
-			_productsToBuy = value;
-			OnPropertyChanged(nameof(ProductsToBuy));
+			_shoppingCart = value;
+			OnPropertyChanged(nameof(ShoppingCart));
 		}
 	}
-
 	public RelayCommand AddProductToBuyCommand { get; }
 	public RelayCommand UpdateProductToBuyCommand { get; }
 	private ICContext Context { get; set; }
