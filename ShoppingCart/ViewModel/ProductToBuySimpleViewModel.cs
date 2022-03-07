@@ -15,6 +15,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 	private ProductToBuy _productToBuy;
 	private ObservableCollection<ProductToBuy> _shoppingCart;
 	private ObservableCollection<Employee> _employees;
+	private ObservableCollection<MountingTechnology> _mountingTechnologies;
 
 	public ProductToBuy ProductToBuy
 	{
@@ -41,6 +42,15 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		{
 			_employees = value;
 			OnPropertyChanged(nameof(Employees));
+		}
+	}
+	public ObservableCollection<MountingTechnology> MountingTechnologies
+	{
+		get => _mountingTechnologies;
+		set
+		{
+			_mountingTechnologies = value;
+			OnPropertyChanged(nameof(MountingTechnologies));
 		}
 	}
 	public RelayCommand AddProductToBuyCommand { get; }
