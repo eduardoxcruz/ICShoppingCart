@@ -122,6 +122,26 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		Context.Employees.Load();
 	}
 
+	private ObservableCollection<MountingTechnology> GetMountingTechnologiesAsObservableCollection()
+	{
+		try
+		{
+			LoadEmployees();
+			
+			return Context.MountingTechnologies.Local.ToObservableCollection();
+		}
+		catch (Exception exception)
+		{
+			Logger
+				.Here()
+				.Error(
+					"Ocurrio una excepcion al tratar de cargar el los empleados. {@BaseException}", 
+					exception.GetBaseException());
+			MyMessageBox.ShowErrorBox("Ocurrio un error al cargar los empleados. Vea el log para mas detalles.");
+			return new ObservableCollection<MountingTechnology>();
+		}
+	}
+	
 	private void LoadMountingTechnologies()
 	{
 		Context.MountingTechnologies.Load();
