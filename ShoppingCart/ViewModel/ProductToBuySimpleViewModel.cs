@@ -126,7 +126,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 	{
 		try
 		{
-			LoadEmployees();
+			LoadMountingTechnologies();
 			
 			return Context.MountingTechnologies.Local.ToObservableCollection();
 		}
