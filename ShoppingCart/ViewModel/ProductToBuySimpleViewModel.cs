@@ -54,6 +54,7 @@ public class ProductToBuySimpleViewModel : ViewModelBase
 		Context = new ICContext();
 		_productToBuy = new ProductToBuy();
 		_shoppingCart = GetShoppingCartAsObservableCollection();
+		_employees = GetEmployeesAsObservableCollection();
 		AddProductToBuyCommand = new RelayCommand(AddProductToBuy, _ => true);
 		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
 	}
