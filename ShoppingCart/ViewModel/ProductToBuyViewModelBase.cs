@@ -206,8 +206,23 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	protected ICContext Context { get; set; }
 	
 #pragma warning disable CS8618
-	protected ProductToBuyViewModelBase() {}
+	protected ProductToBuyViewModelBase()
+	{
+		InitializeProperties();
+	}
 #pragma warning restore CS8618
+
+	private void InitializeProperties()
+	{
+		Context = new ICContext();
+		_selectedIndex = -1;
+		_productToBuy = new ProductToBuy();
+		
+		InitializeFilters();
+		InitializeCommands();
+		InitializeObservableCollections();
+		InitializeShoppingCartView();
+	}
 
 	private void InitializeFilters()
 	{
