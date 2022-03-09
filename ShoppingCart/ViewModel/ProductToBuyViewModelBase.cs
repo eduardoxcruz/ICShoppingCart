@@ -1,7 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Data;
 using Mux;
 using Mux.Model;
+using ShoppingCart.Model;
 
 namespace ShoppingCart.ViewModel;
 
@@ -215,5 +218,74 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 		_encapsulationTypeFilter = "";
 	}
 
+	private void InitializeCommands()
+	{
+		AddProductToBuyCommand = new RelayCommand(AddProductToBuy, _ => true);
+		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
+		CleanProductToBuyCommand = new RelayCommand(ClearProductToBuy, _ => true);
+		ClearFiltersAndRefreshShoppingCartViewCommand = new RelayCommand(ClearFiltersAndRefreshShoppingCartView, _ => true);
+		RefreshShoppingCartViewCommand = new RelayCommand(RefreshShoppinCartView, _ => true);
+	}
+
+	protected abstract void AddProductToBuy(object o);
+
+	protected ProductToBuy GenerateNewProductToBuy()
+	{
+		ProductToBuy newProductToBuy = new()
+		{
+			RequestDate = DateTime.Now,
+			Status = "PENDIENTE"
+		};
+		
+		CopyModifiedProperties(ref newProductToBuy);
+
+		return newProductToBuy;
+	}
+
+	private void CopyModifiedProperties(ref ProductToBuy productToBuy)
+	{
+		productToBuy.Comments = ProductToBuy.Comments;
+		productToBuy.PetitionerId = ProductToBuy.Petitioner!.Id;
+		productToBuy.InternalReference = ProductToBuy.InternalReference;
+		productToBuy.ProductDescription = ProductToBuy.ProductDescription;
+		productToBuy.RequestedAmount = ProductToBuy.RequestedAmount;
+		productToBuy.MountingTechnology = ProductToBuy.MountingTechnology;
+		productToBuy.EncapsulationType = ProductToBuy.EncapsulationType;
+		productToBuy.Priority = ProductToBuy.Priority;
+	}
+
+	protected abstract void UpdateProductToBuy(object o);
 	
+	protected bool ConfirmAction(string confirmationMessage)
+	{
+		return MyMessageBox.ShowConfirmationBox(confirmationMessage) != MessageBoxResult.No;
+	}
+
+	public void ClearProductToBuy(object o)
+	{
+		ProductToBuy = new ProductToBuy() {Status = "PENDIENTE"};
+	}
+	
+	public void ClearFiltersAndRefreshShoppingCartView(object o)
+	{
+		ClearFilters();
+		RefreshShoppinCartView(new object());
+	}
+
+	private void ClearFilters()
+	{
+		QuickSearchFilter = "";
+		IdFilter = "";
+		ProviderFilter = "";
+		InternalReferenceFilter = "";
+		StatusFilter = "";
+		PetitionerFilter = "";
+		MountingTechnologyFilter = "";
+		EncapsulationTypeFilter = "";
+	}
+
+	public void RefreshShoppinCartView(object o)
+	{
+		ShoppingCartView.View.Refresh();
+	}
 }
