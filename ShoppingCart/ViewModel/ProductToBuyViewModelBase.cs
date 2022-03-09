@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart.ViewModel;
 
-public abstract class ProductToBuyViewModelBase
+public abstract class ProductToBuyViewModelBase : ViewModelBase
 {
 	
 }
