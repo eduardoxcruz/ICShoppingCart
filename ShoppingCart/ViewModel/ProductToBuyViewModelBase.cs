@@ -199,9 +199,21 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	public RelayCommand ClearFiltersAndRefreshShoppingCartViewCommand { get; set; }
 	protected ICContext Context { get; set; }
 	
-	
-
 #pragma warning disable CS8618
 	protected ProductToBuyViewModelBase() {}
 #pragma warning restore CS8618
+
+	private void InitializeFilters()
+	{
+		_quickSearchFilter = "";
+		_idFilter = "";
+		_statusFilter = "";
+		_providerFilter = "";
+		_internalReferenceFilter = "";
+		_petitionerFilter = "";
+		_mountingTechnologyFilter = "";
+		_encapsulationTypeFilter = "";
+	}
+
+	
 }
