@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
 using Microsoft.EntityFrameworkCore;
@@ -335,5 +337,123 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	protected void LoadProviders()
 	{
 		Context.Providers.Load();
+	}
+	
+	private void InitializeShoppingCartView()
+	{
+		_shoppingCartView = new CollectionViewSource() {Source = _shoppingCart};
+		_shoppingCartView.SortDescriptions.Clear();
+		_shoppingCartView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
+		_shoppingCartView.Filter += ShoppingCartViewFilters;
+	}
+
+	private void ShoppingCartViewFilters(object sender, FilterEventArgs filterEventArgs)
+	{
+		if (filterEventArgs.Item is not Mux.Model.ProductToBuy)
+		{
+			return;
+		}
+
+		if (AllFiltersAreEmpty())
+		{
+			filterEventArgs.Accepted = true;
+			return;
+		}
+
+		if (!string.IsNullOrEmpty(QuickSearchFilter))
+		{
+			UseQuickSearch(sender, filterEventArgs);
+			return;
+		}
+		
+		UseAdvancedSearch(sender, filterEventArgs);
+	}
+	
+	protected virtual bool AllFiltersAreEmpty()
+	{
+		return BaseFiltersAreEmpty();
+	}
+
+	protected bool BaseFiltersAreEmpty()
+	{
+		return QuickSearchFilter == null &&
+		       IdFilter == null &&
+		       StatusFilter == null &&
+		       ProviderFilter == null &&
+		       InternalReferenceFilter == null &&
+		       PetitionerFilter == null &&
+		       MountingTechnologyFilter == null &&
+		       EncapsulationTypeFilter == null;
+	}
+
+	protected abstract void UseQuickSearch(object sender, FilterEventArgs filterEventArgs);
+
+	protected virtual bool IsInEmployeeProperties(ProductToBuy productToBuy, string searchingText)
+	{
+		foreach (PropertyInfo propertyInfo in productToBuy.GetType().GetProperties())
+		{
+			Type propertyType = Nullable.GetUnderlyingType(propertyInfo.PropertyType) ?? propertyInfo.PropertyType;
+
+			if (propertyType != typeof(Employee))
+			{
+				continue;
+			}
+
+			if (propertyInfo.GetValue(productToBuy) is Employee propertyValue && propertyValue.FullName.ToLower().Contains(searchingText))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	protected abstract bool IsInStringProperties(ProductToBuy productToBuy, string searchingText);
+
+	protected abstract void UseAdvancedSearch(object sender, FilterEventArgs filterEventArgs);
+
+	protected bool IdMatch(ProductToBuy item)
+	{
+		return item.Id.ToString().Contains(IdFilter);
+	}
+
+	protected bool StatusMatch(ProductToBuy item)
+	{
+		return item.Status.ToLower().Contains(StatusFilter.ToLower());
+	}
+
+	protected bool ProviderMatch(ProductToBuy item)
+	{
+		if (item.Provider == null && string.IsNullOrEmpty(ProviderFilter))
+		{
+			return true;
+		}
+		
+		if (item.Provider == null && !string.IsNullOrEmpty(ProviderFilter))
+		{
+			return false;
+		}
+		
+		return item.Provider != null && item.Provider!.BusinessName.ToLower().Contains(ProviderFilter.ToLower());
+	}
+
+	protected bool InternalReferenceMatch(ProductToBuy item)
+	{
+		return item.InternalReference.ToLower().Contains(InternalReferenceFilter.ToLower());
+	}
+
+	protected bool PetitionerMatch(ProductToBuy item)
+	{
+		return item.Petitioner!.FullName.ToLower().Contains(PetitionerFilter.ToLower());
+	}
+
+	protected bool MountingTechnologyMatch(ProductToBuy item)
+	{
+		return item.MountingTechnology.ToLower().Contains(MountingTechnologyFilter.ToLower());
+	}
+	
+	protected bool EncapsulationTypeMatch(ProductToBuy item)
+	{
+		return item.EncapsulationType.ToLower().Contains(EncapsulationTypeFilter.ToLower());
 	}
 }
