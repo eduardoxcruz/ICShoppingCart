@@ -198,4 +198,10 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	public RelayCommand RefreshShoppingCartViewCommand { get; set; }
 	public RelayCommand ClearFiltersAndRefreshShoppingCartViewCommand { get; set; }
 	protected ICContext Context { get; set; }
+	
+	
+
+#pragma warning disable CS8618
+	protected ProductToBuyViewModelBase() {}
+#pragma warning restore CS8618
 }
