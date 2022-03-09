@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Data;
+using Microsoft.EntityFrameworkCore;
 using Mux;
 using Mux.Model;
 using ShoppingCart.Model;
@@ -287,5 +288,52 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	public void RefreshShoppinCartView(object o)
 	{
 		ShoppingCartView.View.Refresh();
+	}
+
+	private void InitializeObservableCollections()
+	{
+		_shoppingCart = GetShoppingCartAsObservableCollection();
+		_employees = GetEmployeesAsObservableCollection();
+		_mountingTechnologies = GetMountingTechnologiesAsObservableCollection();
+		_encapsulationTypes = GetEncapsulationTypesAsObservableCollection();
+		_providers = GetProvidersAsObservableCollection();
+	}
+
+	protected abstract ObservableCollection<ProductToBuy> GetShoppingCartAsObservableCollection();
+	
+	protected void LoadShoppingCart()
+	{
+		Context.ShoppingCart
+			.Include(p => p.Petitioner)
+			.Include(p => p.Provider)
+			.Load();
+	}
+
+	protected abstract ObservableCollection<Employee> GetEmployeesAsObservableCollection();
+	
+	protected void LoadEmployees()
+	{
+		Context.Employees.Load();
+	}
+
+	protected abstract ObservableCollection<MountingTechnology> GetMountingTechnologiesAsObservableCollection();
+	
+	protected void LoadMountingTechnologies()
+	{
+		Context.MountingTechnologies.Load();
+	}
+
+	protected abstract ObservableCollection<EncapsulationType> GetEncapsulationTypesAsObservableCollection();
+	
+	protected void LoadEncapsulationTypes()
+	{
+		Context.EncapsulationTypes.Load();
+	}
+
+	protected abstract ObservableCollection<Provider> GetProvidersAsObservableCollection();
+
+	protected void LoadProviders()
+	{
+		Context.Providers.Load();
 	}
 }
