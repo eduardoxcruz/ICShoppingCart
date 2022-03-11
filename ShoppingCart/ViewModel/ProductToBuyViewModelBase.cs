@@ -53,10 +53,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	}
 	public ProductToBuy ProductToBuy
 	{
-		get
-		{
-			return SelectedIndex > -1 ? _selectedItem : _productToBuy;
-		} 
+		get => SelectedIndex > -1 ? _selectedItem : _productToBuy;
 		set
 		{
 			if (SelectedIndex > -1)
@@ -67,7 +64,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			{
 				_productToBuy = value;
 			}
-			
+
 			OnPropertyChanged(nameof(ProductToBuy));
 			OnPropertyChanged(nameof(SelectedItem));
 		}
@@ -241,7 +238,8 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 		AddProductToBuyCommand = new RelayCommand(AddProductToBuy, _ => true);
 		UpdateProductToBuyCommand = new RelayCommand(UpdateProductToBuy, _ => true);
 		CleanProductToBuyCommand = new RelayCommand(ClearProductToBuy, _ => true);
-		ClearFiltersAndRefreshShoppingCartViewCommand = new RelayCommand(ClearFiltersAndRefreshShoppingCartView, _ => true);
+		ClearFiltersAndRefreshShoppingCartViewCommand =
+			new RelayCommand(ClearFiltersAndRefreshShoppingCartView, _ => true);
 		RefreshShoppingCartViewCommand = new RelayCommand(RefreshShoppinCartView, _ => true);
 	}
 
@@ -249,12 +247,8 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 
 	protected ProductToBuy GenerateNewProductToBuy()
 	{
-		ProductToBuy newProductToBuy = new()
-		{
-			RequestDate = DateTime.Now,
-			Status = "PENDIENTE"
-		};
-		
+		ProductToBuy newProductToBuy = new() {RequestDate = DateTime.Now, Status = "PENDIENTE"};
+
 		CopyModifiedProperties(ref newProductToBuy);
 
 		return newProductToBuy;
@@ -273,7 +267,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	}
 
 	protected abstract void UpdateProductToBuy(object o);
-	
+
 	protected bool ConfirmAction(string confirmationMessage)
 	{
 		return MyMessageBox.ShowConfirmationBox(confirmationMessage) != MessageBoxResult.No;
@@ -281,9 +275,9 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 
 	public void ClearProductToBuy(object o)
 	{
-		ProductToBuy = new ProductToBuy() {Status = "PENDIENTE"};
+		ProductToBuy = new ProductToBuy {Status = "PENDIENTE"};
 	}
-	
+
 	public void ClearFiltersAndRefreshShoppingCartView(object o)
 	{
 		ClearFilters();
@@ -317,7 +311,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	}
 
 	protected abstract ObservableCollection<ProductToBuy> GetShoppingCartAsObservableCollection();
-	
+
 	protected void LoadShoppingCart()
 	{
 		Context.ShoppingCart
@@ -327,21 +321,21 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	}
 
 	protected abstract ObservableCollection<Employee> GetEmployeesAsObservableCollection();
-	
+
 	protected void LoadEmployees()
 	{
 		Context.Employees.Load();
 	}
 
 	protected abstract ObservableCollection<MountingTechnology> GetMountingTechnologiesAsObservableCollection();
-	
+
 	protected void LoadMountingTechnologies()
 	{
 		Context.MountingTechnologies.Load();
 	}
 
 	protected abstract ObservableCollection<EncapsulationType> GetEncapsulationTypesAsObservableCollection();
-	
+
 	protected void LoadEncapsulationTypes()
 	{
 		Context.EncapsulationTypes.Load();
@@ -353,10 +347,10 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	{
 		Context.Providers.Load();
 	}
-	
+
 	private void InitializeShoppingCartView()
 	{
-		_shoppingCartView = new CollectionViewSource() {Source = _shoppingCart};
+		_shoppingCartView = new CollectionViewSource {Source = _shoppingCart};
 		_shoppingCartView.SortDescriptions.Clear();
 		_shoppingCartView.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Descending));
 		_shoppingCartView.Filter += ShoppingCartViewFilters;
@@ -380,10 +374,10 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			UseQuickSearch(sender, filterEventArgs);
 			return;
 		}
-		
+
 		UseAdvancedSearch(sender, filterEventArgs);
 	}
-	
+
 	protected virtual bool AllFiltersAreEmpty()
 	{
 		return BaseFiltersAreEmpty();
@@ -414,7 +408,8 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 				continue;
 			}
 
-			if (propertyInfo.GetValue(productToBuy) is Employee propertyValue && propertyValue.FullName.ToLower().Contains(searchingText))
+			if (propertyInfo.GetValue(productToBuy) is Employee propertyValue &&
+			    propertyValue.FullName.ToLower().Contains(searchingText))
 			{
 				return true;
 			}
@@ -443,12 +438,12 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 		{
 			return true;
 		}
-		
+
 		if (item.Provider == null && !string.IsNullOrEmpty(ProviderFilter))
 		{
 			return false;
 		}
-		
+
 		return item.Provider != null && item.Provider!.BusinessName.ToLower().Contains(ProviderFilter.ToLower());
 	}
 
@@ -466,7 +461,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 	{
 		return item.MountingTechnology.ToLower().Contains(MountingTechnologyFilter.ToLower());
 	}
-	
+
 	protected bool EncapsulationTypeMatch(ProductToBuy item)
 	{
 		return item.EncapsulationType.ToLower().Contains(EncapsulationTypeFilter.ToLower());
