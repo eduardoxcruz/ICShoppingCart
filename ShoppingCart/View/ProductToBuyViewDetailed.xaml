@@ -1,0 +1,905 @@
+﻿<UserControl x:Class="ShoppingCart.View.ProductToBuyViewDetailed"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:ShoppingCart.ViewModel"
+			 xmlns:System="clr-namespace:System;assembly=mscorlib"
+			 mc:Ignorable="d"
+			 Background="White">
+	<UserControl.Resources>
+		<viewModels:ProductToBuyViewModelDetailed x:Key="ViewModel" />
+	</UserControl.Resources>
+	<Viewbox Stretch="Fill">
+		<Grid Width="1300"
+		      Height="690"
+		      DataContext="{Binding Source={StaticResource ViewModel}}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Border Grid.Column="0"
+			        BorderBrush="#FF6B6B6B"
+			        BorderThickness="1"
+			        Margin="8,8,8,8">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="2*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Label Grid.Row="0"
+					       Grid.Column="0"
+					       Grid.ColumnSpan="2"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       FontWeight="Bold"
+					       Content="Busqueda por palabra" />
+					<TextBox Grid.Row="1"
+					         Grid.Column="0"
+					         Grid.ColumnSpan="7"
+					         Margin="8,0,8,8"
+					         FontSize="14">
+						<TextBox.Text>
+							<Binding Path="QuickSearchFilter" />
+						</TextBox.Text>
+					</TextBox>
+					<Label Grid.Row="2"
+					       Grid.Column="0"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       FontWeight="Bold"
+					       Content="Filtros" />
+					<Label Grid.Row="3"
+					       Grid.Column="0"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Id" />
+					<Label Grid.Row="3"
+					       Grid.Column="1"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Estado" />
+					<Label Grid.Row="3"
+					       Grid.Column="2"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Proveedor" />
+					<Label Grid.Row="3"
+					       Grid.Column="3"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Referencia Interna" />
+					<Label Grid.Row="3"
+					       Grid.Column="4"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Solicitante" />
+					<Label Grid.Row="3"
+					       Grid.Column="5"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Tec. de Montaje" />
+					<Label Grid.Row="3"
+					       Grid.Column="6"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="14"
+					       Content="Encapsulado" />
+					<TextBox Grid.Row="4"
+					         Grid.Column="0"
+					         Margin="8,0,0,8"
+					         FontSize="14">
+						<TextBox.Text>
+							<Binding Path="IdFilter" />
+						</TextBox.Text>
+					</TextBox>
+					<ComboBox Grid.Row="4"
+					          Grid.Column="1"
+					          Margin="8,0,0,8"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False">
+						<ComboBox.Text>
+							<Binding Path="StatusFilter" Mode="TwoWay" />
+						</ComboBox.Text>
+						<ComboBoxItem>Solicitado</ComboBoxItem>
+						<ComboBoxItem>Parado por Administracion</ComboBoxItem>
+						<ComboBoxItem>Encontrado</ComboBoxItem>
+						<ComboBoxItem>Transito</ComboBoxItem>
+						<ComboBoxItem>Disponible en Tienda</ComboBoxItem>
+						<ComboBoxItem>Entregado</ComboBoxItem>
+					</ComboBox>
+					<ComboBox Grid.Row="4"
+					          Grid.Column="2"
+					          Margin="8,0,0,8"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False"
+					          DisplayMemberPath="BusinessName">
+						<ComboBox.Text>
+							<Binding Path="ProviderFilter" Mode="TwoWay" />
+						</ComboBox.Text>
+						<ComboBox.ItemsSource>
+							<Binding Path="Providers" Mode="OneWay" />
+						</ComboBox.ItemsSource>
+					</ComboBox>
+					<TextBox Grid.Row="4"
+					         Grid.Column="3"
+					         Margin="8,0,0,8"
+					         FontSize="14">
+						<TextBox.Text>
+							<Binding Path="InternalReferenceFilter" />
+						</TextBox.Text>
+					</TextBox>
+					<ComboBox Grid.Row="4"
+					          Grid.Column="4"
+					          Margin="8,0,0,8"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False"
+					          DisplayMemberPath="FullName">
+						<ComboBox.Text>
+							<Binding Path="PetitionerFilter" Mode="TwoWay" />
+						</ComboBox.Text>
+						<ComboBox.ItemsSource>
+							<Binding Path="Employees" Mode="OneWay" />
+						</ComboBox.ItemsSource>
+					</ComboBox>
+					<TextBox Grid.Row="4"
+					         Grid.Column="5"
+					         Margin="8,0,0,8"
+					         FontSize="14">
+						<TextBox.Text>
+							<Binding Path="MountingTechnologyFilter" />
+						</TextBox.Text>
+					</TextBox>
+					<TextBox Grid.Row="4"
+					         Grid.Column="6"
+					         Margin="8,0,8,8"
+					         FontSize="14">
+						<TextBox.Text>
+							<Binding Path="EncapsulationTypeFilter" />
+						</TextBox.Text>
+					</TextBox>
+					<Grid Grid.Row="5"
+					      Grid.Column="0"
+					      Grid.ColumnSpan="3">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Button Grid.Column="0"
+						        Margin="8,0,0,8"
+						        FontSize="14"
+						        Content="Filtrar"
+						        Command="{Binding Path=RefreshShoppingCartViewCommand}" />
+						<Button Grid.Column="1"
+						        Margin="8,0,0,8"
+						        FontSize="14"
+						        Content="Limpiar"
+						        Command="{Binding Path=ClearFiltersAndRefreshShoppingCartViewCommand}" />
+					</Grid>
+					<DataGrid Grid.Row="6"
+					          Grid.Column="0"
+					          Grid.ColumnSpan="7"
+					          Margin="8,0,8,8"
+					          AutoGenerateColumns="False"
+					          SelectionUnit="FullRow"
+					          SelectionMode="Extended"
+					          CanUserAddRows="False"
+					          CanUserDeleteRows="False"
+					          IsReadOnly="True"
+					          FontSize="13.5"
+					          GridLinesVisibility="Horizontal"
+					          ItemsSource="{Binding ShoppingCartView.View }"
+					          SelectedIndex="{Binding SelectedIndex}"
+					          SelectedItem="{Binding SelectedItem}">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Id"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Id}" />
+							<DataGridTextColumn Header="Estado"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Status}" />
+							<DataGridTextColumn Header="Proveedor"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Provider.BusinessName}" />
+							<DataGridTextColumn Header="Referencia de Orden del Proveedor"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding OrderReference}" />
+							<DataGridTextColumn Header="Fecha de Localizacion"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding LocationDate }" />
+							<DataGridTextColumn Header="Vendedor"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Seller.FullName}" />
+							<DataGridTextColumn Header="Fecha de Llegada"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding ArrivalDate }" />
+							<DataGridTextColumn Header="Comentarios"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Comments}" />
+							<DataGridTextColumn Header="Fecha de Solicitud"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding RequestDate}" />
+							<DataGridTextColumn Header="Solicitante"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Petitioner.FullName}" />
+							<DataGridTextColumn Header="Referencia Interna"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding InternalReference}" />
+							<DataGridTextColumn Header="Descripción del Producto"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding ProductDescription}" />
+							<DataGridTextColumn Header="Cantidad Solicitada"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding RequestedAmount}" />
+							<DataGridTextColumn Header="Tecnologia de Montaje"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding MountingTechnology}" />
+							<DataGridTextColumn Header="Encapsulado o Tipo de Conexion"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding EncapsulationType}" />
+							<DataGridTextColumn Header="Prioridad"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Priority}" />
+							<DataGridTextColumn Header="Precio Original del Proveedor"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding OriginalProductPirce}" />
+							<DataGridCheckBoxColumn Header="¿El precio incluye IVA?"
+													Width="SizeToHeader"
+													Binding="{Binding IvaIncluded}"
+													IsThreeState="False" />
+							<DataGridTextColumn Header="Moneda"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding Currency}" />
+							<DataGridTextColumn Header="% de Costo Extra (Prima)"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding ExtraCost}" />
+							<DataGridTextColumn Header="Precio del Producto + IVA"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding ProductPriceWithIva}" />
+							<DataGridTextColumn Header="Sub Total"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding SubTotal}" />
+							<DataGridTextColumn Header="URL del Producto"
+							                    Width="SizeToHeader"
+							                    Binding="{Binding ProductUrl}" />
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</Border>
+			<Border Grid.Column="1"
+			        BorderBrush="#FF6B6B6B"
+			        BorderThickness="1"
+			        Margin="0,8,8,8">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Label Grid.Row="0"
+					       Grid.Column="0"
+					       HorizontalContentAlignment="Right"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="16"
+					       FontWeight="Bold"
+					       Content="Solicitud" />
+					<Label Grid.Row="0"
+					       Grid.Column="1"
+					       HorizontalContentAlignment="Left"
+					       VerticalContentAlignment="Center"
+					       Margin="8,0,0,8"
+					       Padding="0,0,0,0"
+					       FontSize="16"
+					       FontWeight="Bold">
+						<Label.Content>
+							<Binding Path="ProductToBuy.Id"
+							         UpdateSourceTrigger="PropertyChanged"
+							         Mode="OneWay" />
+						</Label.Content>
+					</Label>
+					<ScrollViewer Grid.Row="1"
+					              Grid.Column="0"
+					              Grid.ColumnSpan="2"
+					              Margin="8,0,8,8"
+					              HorizontalScrollBarVisibility="Disabled"
+					              VerticalScrollBarVisibility="Visible">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Label Grid.Row="0"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Estado" />
+							<ComboBox Grid.Row="0"
+					          Grid.Column="1"
+					          Margin="0,0,8,16"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False">
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Status" 
+											 Mode="TwoWay" />
+								</ComboBox.SelectedItem>
+								<System:String>Solicitado</System:String>
+								<System:String>Parado por Administracion</System:String>
+								<System:String>Encontrado</System:String>
+								<System:String>Transito</System:String>
+								<System:String>Disponible en Tienda</System:String>
+								<System:String>Entregado</System:String>
+							</ComboBox>
+							<Label Grid.Row="1"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Proveedor" />
+							<ComboBox Grid.Row="1"
+					          Grid.Column="1"
+					          Margin="0,0,8,16"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False"
+					          DisplayMemberPath="BusinessName">
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Provider" 
+											 Mode="TwoWay" />
+								</ComboBox.SelectedItem>
+								<ComboBox.ItemsSource>
+									<Binding Path="Providers" Mode="OneWay" />
+								</ComboBox.ItemsSource>
+							</ComboBox>
+							<TextBlock Grid.Row="2"
+									   Grid.Column="0"
+									   Margin="0,0,0,16"
+									   Padding="0,0,0,0"
+									   FontSize="14"
+									   TextWrapping="Wrap">
+								Referencia de Orden del Proveedor
+							</TextBlock>
+							<TextBox Grid.Row="2"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.OrderReference"
+									         UpdateSourceTrigger="LostFocus"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="3"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Fecha de Localizacion" />
+							<DatePicker Grid.Row="3"
+										Grid.Column="1"
+										Margin="0,0,8,16"
+										Padding="0,0,0,0"
+										FontSize="14"
+										VerticalContentAlignment="Center">
+								<DatePicker.SelectedDate>
+									<Binding Path="ProductToBuy.LocationDate" 
+											 Mode="TwoWay"
+											 TargetNullValue="{x:Static System:DateTime.Now}"/>
+								</DatePicker.SelectedDate>
+							</DatePicker>
+							<Label Grid.Row="4"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Vendedor" />
+							<ComboBox Grid.Row="4"
+					          Grid.Column="1"
+					          Margin="0,0,8,16"
+					          FontSize="14"
+					          HorizontalContentAlignment="Center"
+					          IsEditable="False"
+					          IsReadOnly="False"
+					          DisplayMemberPath="FullName">
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Seller"
+											 Mode="TwoWay" />
+								</ComboBox.SelectedItem>
+								<ComboBox.ItemsSource>
+									<Binding Path="Employees" Mode="OneWay" />
+								</ComboBox.ItemsSource>
+							</ComboBox>
+							<Label Grid.Row="5"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Fecha de Llegada" />
+							<DatePicker Grid.Row="5"
+										Grid.Column="1"
+										Margin="0,0,8,16"
+										Padding="0,0,0,0"
+										FontSize="14"
+										VerticalContentAlignment="Center">
+								<DatePicker.SelectedDate>
+									<Binding Path="ProductToBuy.ArrivalDate" 
+											 Mode="TwoWay"
+											 TargetNullValue="{x:Static System:DateTime.Now}"/>
+								</DatePicker.SelectedDate>
+							</DatePicker>
+							<Label Grid.Row="6"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Comentarios" />
+							<TextBox Grid.Row="6"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         TextWrapping="Wrap"
+									 HorizontalContentAlignment="Center">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.Comments"
+									         UpdateSourceTrigger="LostFocus"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="7"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Fecha de Solicitud" />
+							<Label Grid.Row="7"
+							       Grid.Column="1"
+							       HorizontalContentAlignment="Center"
+							       VerticalContentAlignment="Center"
+							       Margin="0,0,8,16"
+							       Padding="0,0,0,0"
+							       FontSize="14">
+								<Label.Content>
+									<Binding Path="ProductToBuy.RequestDate"
+									         UpdateSourceTrigger="PropertyChanged"
+									         Mode="OneWay" />
+								</Label.Content>
+							</Label>
+							<Label Grid.Row="8"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Solicitante" />
+							<ComboBox Grid.Row="8"
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False"
+							          DisplayMemberPath="FullName">
+								<ComboBox.ItemsSource>
+									<Binding Path="Employees" Mode="OneWay" />
+								</ComboBox.ItemsSource>
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Petitioner" Mode="TwoWay" />
+								</ComboBox.SelectedItem>
+							</ComboBox>
+							<Label Grid.Row="9"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Referencia Interna" />
+							<TextBox Grid.Row="9"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.InternalReference"
+									         UpdateSourceTrigger="LostFocus"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="10"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Descripcion del Producto" />
+							<TextBox Grid.Row="10"
+							         Grid.Column="1"
+							         Grid.ColumnSpan="7"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.ProductDescription"
+									         UpdateSourceTrigger="LostFocus"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="11"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Cantidad Solicitada" />
+							<TextBox Grid.Row="11"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.RequestedAmount"
+									         UpdateSourceTrigger="LostFocus"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="12"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Tecnologia de Montaje" />
+							<ComboBox Grid.Row="12"
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="True"
+							          IsReadOnly="False"
+							          DisplayMemberPath="Name"
+							          Text="{Binding Path=ProductToBuy.MountingTechnology, Mode=TwoWay}">
+								<ComboBox.ItemsSource>
+									<Binding Path="MountingTechnologies" Mode="OneWay" />
+								</ComboBox.ItemsSource>
+							</ComboBox>
+							<TextBlock Grid.Row="13"
+									   Grid.Column="0"
+									   Margin="0,0,0,16"
+									   Padding="0,0,0,0"
+									   FontSize="14"
+									   TextWrapping="Wrap">
+								Encapsulado o Tipo de Conexion
+							</TextBlock>
+							<ComboBox Grid.Row="13"
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="True"
+							          IsReadOnly="False"
+							          DisplayMemberPath="FullDescription"
+							          Text="{Binding Path=ProductToBuy.EncapsulationType, Mode=TwoWay}">
+								<ComboBox.ItemsSource>
+									<Binding Path="EncapsulationTypes" Mode="OneWay" />
+								</ComboBox.ItemsSource>
+							</ComboBox>
+							<Label Grid.Row="14"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Prioridad" />
+							<ComboBox Grid.Row="14"
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False">
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Priority"
+											 Mode="TwoWay" />
+								</ComboBox.SelectedItem>
+								<System:String>Alta</System:String>
+								<System:String>Moderada</System:String>
+								<System:String>Baja</System:String>
+							</ComboBox>
+							<Label Grid.Row="15"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Precio Original del Proveedor" />
+							<TextBox Grid.Row="15"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.OriginalProductPirce"
+									         UpdateSourceTrigger="PropertyChanged"
+											 Delay="600"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="16"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="¿El Precio Incluye IVA?" />
+							<CheckBox Grid.Row="16"
+									  Grid.Column="1"
+									  Margin="0,0,0,16"
+									  Padding="0,0,0,0">
+								<CheckBox.IsChecked>
+									<Binding Path="ProductToBuy.IvaIncluded"
+											 Mode="TwoWay"/>
+								</CheckBox.IsChecked>
+							</CheckBox>
+							<Label Grid.Row="17"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Moneda" />
+							<ComboBox Grid.Row="17"
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False">
+								<ComboBox.SelectedItem>
+									<Binding Path="ProductToBuy.Currency"
+											 Mode="TwoWay"/>
+								</ComboBox.SelectedItem>
+								<System:String>MXN</System:String>
+								<System:String>USD</System:String>
+							</ComboBox>
+							<Label Grid.Row="18"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="% de Costo Extra (Prima)" />
+							<TextBox Grid.Row="18"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.ExtraCost"
+									         UpdateSourceTrigger="PropertyChanged"
+									         Mode="TwoWay"
+											 Delay="600">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+							<Label Grid.Row="19"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Precio del Producto + IVA" />
+							<Label Grid.Row="19"
+							       Grid.Column="1"
+							       HorizontalContentAlignment="Center"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14">
+								<Binding Path="ProductToBuy.ProductPriceWithIva"
+										 Mode="OneWay"/>
+							</Label>
+							<Label Grid.Row="20"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="Sub Total" />
+							<Label Grid.Row="20"
+							       Grid.Column="1"
+							       HorizontalContentAlignment="Center"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14">
+								<Binding Path="ProductToBuy.SubTotal"
+										 Mode="OneWay"/>
+							</Label>
+							<Label Grid.Row="21"
+							       Grid.Column="0"
+							       HorizontalContentAlignment="Left"
+							       VerticalContentAlignment="Top"
+							       Margin="0,0,0,16"
+							       Padding="0,0,0,0"
+							       FontSize="14"
+							       Content="URL del Producto" />
+							<TextBox Grid.Row="21"
+							         Grid.Column="1"
+							         Margin="0,0,8,16"
+							         FontSize="14"
+							         HorizontalContentAlignment="Center"
+							         TextWrapping="Wrap">
+								<TextBox.Text>
+									<Binding Path="ProductToBuy.ProductUrl"
+									         Mode="TwoWay">
+										<Binding.ValidationRules>
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+						</Grid>
+					</ScrollViewer>
+					<Button Grid.Row="2"
+					        Grid.Column="0"
+					        Grid.ColumnSpan="2"
+					        Margin="8,0,8,8"
+					        FontSize="14"
+					        Content="Limpiar"
+					        Command="{Binding CleanProductToBuyCommand}" />
+					<Button Grid.Row="3"
+					        Grid.Column="0"
+					        Margin="8,0,0,8"
+					        FontSize="14"
+					        Content="Agregar"
+					        Command="{Binding AddProductToBuyCommand}" />
+					<Button Grid.Row="3"
+					        Grid.Column="1"
+					        Margin="8,0,8,8"
+					        FontSize="14"
+					        Content="Actualizar"
+					        Command="{Binding UpdateProductToBuyCommand}" />
+				</Grid>
+			</Border>
+		</Grid>
+	</Viewbox>
+</UserControl>
