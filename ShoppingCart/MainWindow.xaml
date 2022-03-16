@@ -6,7 +6,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Width="1300"
-        Height="690">
-	<Viewbox x:Name="RootViewbox" 
+        Height="690"
+		WindowStartupLocation="CenterScreen" >
+	<Viewbox x:Name="RootViewbox"
 	         Stretch="Fill" />
 </Window>
