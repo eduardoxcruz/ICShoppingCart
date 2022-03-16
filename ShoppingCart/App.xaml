@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:ShoppingCart"
              StartupUri="MainWindow.xaml">
 	<Application.Resources>
-
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<TextBlock TextWrapping="Wrap" Text="{Binding}" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="HorizontalContentAlignment"
+			        Value="Center" />
+			<Setter Property="FontWeight"
+			        Value="Bold" />
+		</Style>
+		<Style TargetType="DataGridCell">
+			<Setter Property="TextBlock.TextAlignment"
+			        Value="Center" />
+		</Style>
 	</Application.Resources>
 </Application>
