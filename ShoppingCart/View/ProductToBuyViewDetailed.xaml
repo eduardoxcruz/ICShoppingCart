@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:ShoppingCart.ViewModel"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              Background="White">
 	<UserControl.Resources>
@@ -405,12 +405,12 @@
 									<Binding Path="ProductToBuy.Status"
 									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
-								<System:String>Solicitado</System:String>
-								<System:String>Parado por Administracion</System:String>
-								<System:String>Encontrado</System:String>
-								<System:String>Transito</System:String>
-								<System:String>Disponible en Tienda</System:String>
-								<System:String>Entregado</System:String>
+								<system:String>Solicitado</system:String>
+								<system:String>Parado por Administracion</system:String>
+								<system:String>Encontrado</system:String>
+								<system:String>Transito</system:String>
+								<system:String>Disponible en Tienda</system:String>
+								<system:String>Entregado</system:String>
 							</ComboBox>
 							<Label Grid.Row="1"
 							       Grid.Column="0"
@@ -476,7 +476,7 @@
 								<DatePicker.SelectedDate>
 									<Binding Path="ProductToBuy.LocationDate"
 									         Mode="TwoWay"
-									         TargetNullValue="{x:Static System:DateTime.Now}" />
+									         TargetNullValue="{x:Static system:DateTime.Now}" />
 								</DatePicker.SelectedDate>
 							</DatePicker>
 							<Label Grid.Row="4"
@@ -520,7 +520,7 @@
 								<DatePicker.SelectedDate>
 									<Binding Path="ProductToBuy.ArrivalDate"
 									         Mode="TwoWay"
-									         TargetNullValue="{x:Static System:DateTime.Now}" />
+									         TargetNullValue="{x:Static system:DateTime.Now}" />
 								</DatePicker.SelectedDate>
 							</DatePicker>
 							<Label Grid.Row="6"
@@ -725,9 +725,9 @@
 									<Binding Path="ProductToBuy.Priority"
 									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
-								<System:String>Alta</System:String>
-								<System:String>Moderada</System:String>
-								<System:String>Baja</System:String>
+								<system:String>Alta</system:String>
+								<system:String>Moderada</system:String>
+								<system:String>Baja</system:String>
 							</ComboBox>
 							<Label Grid.Row="15"
 							       Grid.Column="0"
@@ -790,8 +790,8 @@
 									<Binding Path="ProductToBuy.Currency"
 									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
-								<System:String>MXN</System:String>
-								<System:String>USD</System:String>
+								<system:String>MXN</system:String>
+								<system:String>USD</system:String>
 							</ComboBox>
 							<Label Grid.Row="18"
 							       Grid.Column="0"
