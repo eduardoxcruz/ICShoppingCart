@@ -41,6 +41,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(SelectedItem));
 		}
 	}
+
 	public ProductToBuy SelectedItem
 	{
 		get => _selectedItem;
@@ -51,6 +52,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(ProductToBuy));
 		}
 	}
+
 	public ProductToBuy ProductToBuy
 	{
 		get => SelectedIndex > -1 ? _selectedItem : _productToBuy;
@@ -69,6 +71,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(SelectedItem));
 		}
 	}
+
 	public ObservableCollection<ProductToBuy> ShoppingCart
 	{
 		get => _shoppingCart;
@@ -78,6 +81,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(ShoppingCart));
 		}
 	}
+
 	public CollectionViewSource ShoppingCartView
 	{
 		get => _shoppingCartView;
@@ -87,6 +91,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(ShoppingCartView));
 		}
 	}
+
 	public ObservableCollection<Employee> Employees
 	{
 		get => _employees;
@@ -96,6 +101,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(Employees));
 		}
 	}
+
 	public ObservableCollection<MountingTechnology> MountingTechnologies
 	{
 		get => _mountingTechnologies;
@@ -105,6 +111,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(MountingTechnologies));
 		}
 	}
+
 	public ObservableCollection<EncapsulationType> EncapsulationTypes
 	{
 		get => _encapsulationTypes;
@@ -114,6 +121,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(EncapsulationTypes));
 		}
 	}
+
 	public ObservableCollection<Provider> Providers
 	{
 		get => _providers;
@@ -123,6 +131,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(Providers));
 		}
 	}
+
 	public string QuickSearchFilter
 	{
 		get => _quickSearchFilter;
@@ -132,6 +141,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(QuickSearchFilter));
 		}
 	}
+
 	public string IdFilter
 	{
 		get => _idFilter;
@@ -141,6 +151,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(IdFilter));
 		}
 	}
+
 	public string StatusFilter
 	{
 		get => _statusFilter;
@@ -150,6 +161,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(StatusFilter));
 		}
 	}
+
 	public string ProviderFilter
 	{
 		get => _providerFilter;
@@ -159,6 +171,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(ProviderFilter));
 		}
 	}
+
 	public string InternalReferenceFilter
 	{
 		get => _internalReferenceFilter;
@@ -168,6 +181,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(InternalReferenceFilter));
 		}
 	}
+
 	public string PetitionerFilter
 	{
 		get => _petitionerFilter;
@@ -177,6 +191,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(PetitionerFilter));
 		}
 	}
+
 	public string MountingTechnologyFilter
 	{
 		get => _mountingTechnologyFilter;
@@ -186,6 +201,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(MountingTechnologyFilter));
 		}
 	}
+
 	public string EncapsulationTypeFilter
 	{
 		get => _encapsulationTypeFilter;
@@ -195,6 +211,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 			OnPropertyChanged(nameof(EncapsulationTypeFilter));
 		}
 	}
+
 	public RelayCommand AddProductToBuyCommand { get; set; }
 	public RelayCommand UpdateProductToBuyCommand { get; set; }
 	public RelayCommand CleanProductToBuyCommand { get; set; }
@@ -214,7 +231,7 @@ public abstract class ProductToBuyViewModelBase : ViewModelBase
 		Context = new ICContext();
 		_selectedIndex = -1;
 		_productToBuy = new ProductToBuy();
-		
+
 		InitializeFilters();
 		InitializeCommands();
 		InitializeObservableCollections();

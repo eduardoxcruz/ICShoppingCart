@@ -1,15 +1,14 @@
 ﻿using System.Windows.Controls;
 
-namespace ShoppingCart.View
+namespace ShoppingCart.View;
+
+/// <summary>
+///     Lógica de interacción para ProductToBuyViewDetailed.xaml
+/// </summary>
+public partial class ProductToBuyViewDetailed : UserControl
 {
-	/// <summary>
-	/// Lógica de interacción para ProductToBuyViewDetailed.xaml
-	/// </summary>
-	public partial class ProductToBuyViewDetailed : UserControl
+	public ProductToBuyViewDetailed()
 	{
-		public ProductToBuyViewDetailed()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

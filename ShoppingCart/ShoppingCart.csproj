@@ -8,8 +8,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="eduardoxcruz.SerilogUtils" Version="1.0.1" />
-		<PackageReference Include="IndustrialComplements.Mux" Version="2.0.0" />
+		<PackageReference Include="eduardoxcruz.SerilogUtils" Version="1.0.1"/>
+		<PackageReference Include="IndustrialComplements.Mux" Version="2.0.0"/>
 	</ItemGroup>
 
 </Project>

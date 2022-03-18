@@ -1,12 +1,12 @@
 ﻿<UserControl x:Class="ShoppingCart.View.ProductToBuyViewDetailed"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:ShoppingCart.ViewModel"
-			 xmlns:System="clr-namespace:System;assembly=mscorlib"
-			 mc:Ignorable="d"
-			 Background="White">
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             Background="White">
 	<UserControl.Resources>
 		<viewModels:ProductToBuyViewModelDetailed x:Key="ViewModel" />
 	</UserControl.Resources>
@@ -291,9 +291,9 @@
 							                    Width="SizeToHeader"
 							                    Binding="{Binding OriginalProductPirce}" />
 							<DataGridCheckBoxColumn Header="¿El precio incluye IVA?"
-													Width="SizeToHeader"
-													Binding="{Binding IvaIncluded}"
-													IsThreeState="False" />
+							                        Width="SizeToHeader"
+							                        Binding="{Binding IvaIncluded}"
+							                        IsThreeState="False" />
 							<DataGridTextColumn Header="Moneda"
 							                    Width="SizeToHeader"
 							                    Binding="{Binding Currency}" />
@@ -395,15 +395,15 @@
 							       FontSize="14"
 							       Content="Estado" />
 							<ComboBox Grid.Row="0"
-					          Grid.Column="1"
-					          Margin="0,0,8,16"
-					          FontSize="14"
-					          HorizontalContentAlignment="Center"
-					          IsEditable="False"
-					          IsReadOnly="False">
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False">
 								<ComboBox.SelectedItem>
-									<Binding Path="ProductToBuy.Status" 
-											 Mode="TwoWay" />
+									<Binding Path="ProductToBuy.Status"
+									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
 								<System:String>Solicitado</System:String>
 								<System:String>Parado por Administracion</System:String>
@@ -421,27 +421,27 @@
 							       FontSize="14"
 							       Content="Proveedor" />
 							<ComboBox Grid.Row="1"
-					          Grid.Column="1"
-					          Margin="0,0,8,16"
-					          FontSize="14"
-					          HorizontalContentAlignment="Center"
-					          IsEditable="False"
-					          IsReadOnly="False"
-					          DisplayMemberPath="BusinessName">
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False"
+							          DisplayMemberPath="BusinessName">
 								<ComboBox.SelectedItem>
-									<Binding Path="ProductToBuy.Provider" 
-											 Mode="TwoWay" />
+									<Binding Path="ProductToBuy.Provider"
+									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
 								<ComboBox.ItemsSource>
 									<Binding Path="Providers" Mode="OneWay" />
 								</ComboBox.ItemsSource>
 							</ComboBox>
 							<TextBlock Grid.Row="2"
-									   Grid.Column="0"
-									   Margin="0,0,0,16"
-									   Padding="0,0,0,0"
-									   FontSize="14"
-									   TextWrapping="Wrap">
+							           Grid.Column="0"
+							           Margin="0,0,0,16"
+							           Padding="0,0,0,0"
+							           FontSize="14"
+							           TextWrapping="Wrap">
 								Referencia de Orden del Proveedor
 							</TextBlock>
 							<TextBox Grid.Row="2"
@@ -468,15 +468,15 @@
 							       FontSize="14"
 							       Content="Fecha de Localizacion" />
 							<DatePicker Grid.Row="3"
-										Grid.Column="1"
-										Margin="0,0,8,16"
-										Padding="0,0,0,0"
-										FontSize="14"
-										VerticalContentAlignment="Center">
+							            Grid.Column="1"
+							            Margin="0,0,8,16"
+							            Padding="0,0,0,0"
+							            FontSize="14"
+							            VerticalContentAlignment="Center">
 								<DatePicker.SelectedDate>
-									<Binding Path="ProductToBuy.LocationDate" 
-											 Mode="TwoWay"
-											 TargetNullValue="{x:Static System:DateTime.Now}"/>
+									<Binding Path="ProductToBuy.LocationDate"
+									         Mode="TwoWay"
+									         TargetNullValue="{x:Static System:DateTime.Now}" />
 								</DatePicker.SelectedDate>
 							</DatePicker>
 							<Label Grid.Row="4"
@@ -488,16 +488,16 @@
 							       FontSize="14"
 							       Content="Vendedor" />
 							<ComboBox Grid.Row="4"
-					          Grid.Column="1"
-					          Margin="0,0,8,16"
-					          FontSize="14"
-					          HorizontalContentAlignment="Center"
-					          IsEditable="False"
-					          IsReadOnly="False"
-					          DisplayMemberPath="FullName">
+							          Grid.Column="1"
+							          Margin="0,0,8,16"
+							          FontSize="14"
+							          HorizontalContentAlignment="Center"
+							          IsEditable="False"
+							          IsReadOnly="False"
+							          DisplayMemberPath="FullName">
 								<ComboBox.SelectedItem>
 									<Binding Path="ProductToBuy.Seller"
-											 Mode="TwoWay" />
+									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
 								<ComboBox.ItemsSource>
 									<Binding Path="Employees" Mode="OneWay" />
@@ -512,15 +512,15 @@
 							       FontSize="14"
 							       Content="Fecha de Llegada" />
 							<DatePicker Grid.Row="5"
-										Grid.Column="1"
-										Margin="0,0,8,16"
-										Padding="0,0,0,0"
-										FontSize="14"
-										VerticalContentAlignment="Center">
+							            Grid.Column="1"
+							            Margin="0,0,8,16"
+							            Padding="0,0,0,0"
+							            FontSize="14"
+							            VerticalContentAlignment="Center">
 								<DatePicker.SelectedDate>
-									<Binding Path="ProductToBuy.ArrivalDate" 
-											 Mode="TwoWay"
-											 TargetNullValue="{x:Static System:DateTime.Now}"/>
+									<Binding Path="ProductToBuy.ArrivalDate"
+									         Mode="TwoWay"
+									         TargetNullValue="{x:Static System:DateTime.Now}" />
 								</DatePicker.SelectedDate>
 							</DatePicker>
 							<Label Grid.Row="6"
@@ -536,7 +536,7 @@
 							         Margin="0,0,8,16"
 							         FontSize="14"
 							         TextWrapping="Wrap"
-									 HorizontalContentAlignment="Center">
+							         HorizontalContentAlignment="Center">
 								<TextBox.Text>
 									<Binding Path="ProductToBuy.Comments"
 									         UpdateSourceTrigger="LostFocus"
@@ -686,11 +686,11 @@
 								</ComboBox.ItemsSource>
 							</ComboBox>
 							<TextBlock Grid.Row="13"
-									   Grid.Column="0"
-									   Margin="0,0,0,16"
-									   Padding="0,0,0,0"
-									   FontSize="14"
-									   TextWrapping="Wrap">
+							           Grid.Column="0"
+							           Margin="0,0,0,16"
+							           Padding="0,0,0,0"
+							           FontSize="14"
+							           TextWrapping="Wrap">
 								Encapsulado o Tipo de Conexion
 							</TextBlock>
 							<ComboBox Grid.Row="13"
@@ -723,7 +723,7 @@
 							          IsReadOnly="False">
 								<ComboBox.SelectedItem>
 									<Binding Path="ProductToBuy.Priority"
-											 Mode="TwoWay" />
+									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
 								<System:String>Alta</System:String>
 								<System:String>Moderada</System:String>
@@ -746,7 +746,7 @@
 								<TextBox.Text>
 									<Binding Path="ProductToBuy.OriginalProductPirce"
 									         UpdateSourceTrigger="PropertyChanged"
-											 Delay="600"
+									         Delay="600"
 									         Mode="TwoWay">
 										<Binding.ValidationRules>
 											<ExceptionValidationRule />
@@ -763,12 +763,12 @@
 							       FontSize="14"
 							       Content="¿El Precio Incluye IVA?" />
 							<CheckBox Grid.Row="16"
-									  Grid.Column="1"
-									  Margin="0,0,0,16"
-									  Padding="0,0,0,0">
+							          Grid.Column="1"
+							          Margin="0,0,0,16"
+							          Padding="0,0,0,0">
 								<CheckBox.IsChecked>
 									<Binding Path="ProductToBuy.IvaIncluded"
-											 Mode="TwoWay"/>
+									         Mode="TwoWay" />
 								</CheckBox.IsChecked>
 							</CheckBox>
 							<Label Grid.Row="17"
@@ -788,7 +788,7 @@
 							          IsReadOnly="False">
 								<ComboBox.SelectedItem>
 									<Binding Path="ProductToBuy.Currency"
-											 Mode="TwoWay"/>
+									         Mode="TwoWay" />
 								</ComboBox.SelectedItem>
 								<System:String>MXN</System:String>
 								<System:String>USD</System:String>
@@ -811,7 +811,7 @@
 									<Binding Path="ProductToBuy.ExtraCost"
 									         UpdateSourceTrigger="PropertyChanged"
 									         Mode="TwoWay"
-											 Delay="600">
+									         Delay="600">
 										<Binding.ValidationRules>
 											<ExceptionValidationRule />
 										</Binding.ValidationRules>
@@ -834,7 +834,7 @@
 							       Padding="0,0,0,0"
 							       FontSize="14">
 								<Binding Path="ProductToBuy.ProductPriceWithIva"
-										 Mode="OneWay"/>
+								         Mode="OneWay" />
 							</Label>
 							<Label Grid.Row="20"
 							       Grid.Column="0"
@@ -852,7 +852,7 @@
 							       Padding="0,0,0,0"
 							       FontSize="14">
 								<Binding Path="ProductToBuy.SubTotal"
-										 Mode="OneWay"/>
+								         Mode="OneWay" />
 							</Label>
 							<Label Grid.Row="21"
 							       Grid.Column="0"

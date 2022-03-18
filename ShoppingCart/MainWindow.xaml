@@ -7,7 +7,7 @@
         Title="MainWindow"
         Width="1300"
         Height="690"
-		WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen">
 	<Viewbox x:Name="RootViewbox"
 	         Stretch="Fill" />
 </Window>
